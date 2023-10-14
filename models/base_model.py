@@ -4,7 +4,6 @@
 
 import uuid
 from datetime import datetime
-import models
 
 
 class BaseModel():
@@ -12,7 +11,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """initializes class BaseModel"""
         if kwargs:
-            for key, value in kwargs.items ():
+            for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
@@ -31,12 +30,14 @@ class BaseModel():
                                      self.id, self.__dict__)
 
     def save(self):
-        """updates the public instance attribute updated_at with the current datetime"""
+        """updates the public instance attribute updated_at with
+        the current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """returns a dictionary containing all keys/values of __dict__ of
+        the instance"""
         new_dict = dict(self.__dict__)
         new_dict['created_at'] = self.__dict__['created_at'].isoformat()
         new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
