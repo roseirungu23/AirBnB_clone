@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     __classes = [
@@ -36,7 +37,8 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, args):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an instance based on the
+        class name and id"""
         strings = args.split()
         if not args:
             print("** class name missing **")
@@ -72,7 +74,8 @@ class HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
 
     def do_all(self, args):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of all instances
+        based or not on the class name"""
         args = args.split()
         objects = storage.all()
         new_list = []
@@ -90,7 +93,8 @@ class HBNBCommand(cmd.Cmd):
             print(new_list)
 
     def do_update(self, args):
-        """Updates an instance based on the class name and id by adding or updating attribute
+        """Updates an instance based on the class name and id by
+        adding or updating attribute
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
         objects = storage.all()
@@ -118,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             obj.save()
 
     def do_quit(self, args):
-        """Command to quit the program"""
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, args):
@@ -130,6 +134,7 @@ class HBNBCommand(cmd.Cmd):
            presses enter on an empty line
         """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

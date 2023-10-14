@@ -1,26 +1,15 @@
 #!/usr/bin/python3
-"""Defines class FileStorage"""
+"""Defines class FileStorage""" 
 
 import json
-from models.base_model import BaseModel
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 
-
-class FileStorage():
-    """Represents class FileStorage
-    """
+class FileStorage:
+    """Initializes class FileStorage"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """Public instance method that returns the
-        dictionary __objects.
-        """
+        """Public instance method that returns the dictionary __objects."""
         return FileStorage.__objects
 
     def new(self, obj):
@@ -30,17 +19,16 @@ class FileStorage():
             FileStorage.__objects[key] = obj
 
     def save(self):
-        """Public instance method that serializes __objects
-        to the JSON file (path: __file_path)"""
+        """Public instance method that serializes __objects to the JSON file (path: __file_path)"""
         new_dict = {}
         for key, value in FileStorage.__objects.items():
             new_dict[key] = value.to_dict().copy()
-             with open(FileStorage.__file_path, mode='w') as my_file:
+
+        with open(FileStorage.__file_path, mode='w') as my_file:
             json.dump(new_dict, my_file)
 
     def reload(self):
-        """Public instance method that deserializes a JSON
-        file to __object"""
+        """Public instance method that deserializes a JSON file to __objects"""
         try:
             with open(FileStorage.__file_path, mode='r') as my_file:
                 new_dict = json.load(my_file)
