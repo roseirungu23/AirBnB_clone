@@ -22,20 +22,20 @@ class BaseModel:
             self.updated_at = datetime.now()
 
     def save(self):
-        """updates the public instance attribute updated_at with
-        the current datetime"""
+        """Updates the public instance attribute updated_at with
+            the current datetime and saves it"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """returns a dictionary containing all keys/values of
-        __dict__ of the instance"""
-        instance_dict = self.__dict__.copy()
-        instance_dict['__class__'] = self.__class__.__name__
-        instance_dict['created_at'] = self.created_at.isoformat()
-        instance_dict['updated_at'] = self.updated_at.isoformat()
-        return instance_dict
+        """Returns a dictionary containing all keys/values of
+            __dict__ of the instance"""
+        new_dict = dict(self.__dict__)
+        new_dict['__class__'] = self.__class__.__name__
+        new_dict['created_at'] = self.__dict__['created_at'].isoformat()
+        new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
+        return new_dict
 
     def __str__(self):
-        """prints: [<class name>] (<self.id>) <self.__dict__>"""
-        return "[{}] ({}) {}".format(self.__class__.__name__,
+        """Prints: [<class name>] (<self.id>) <self.__dict__>"""
+        return "[{}] ({}) {}".format(self.__class__.__name,
                                      self.id, self.__dict__)
