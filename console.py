@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Method Command Interpreter"""
+
 import cmd
 import shlex
 from models import storage
@@ -122,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
             obj.save()
 
     def do_quit(self, args):
-        """Quit command to exit the program"""
+        """Command to quit the program"""
         return True
 
     def do_EOF(self, args):
