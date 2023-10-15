@@ -21,8 +21,8 @@ class TestAmenity(unittest.TestCase):
         """Tests that models/amenity.py conforms to PEP8."""
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/amenity.py'])
-        self.assertEqual(result.total_errors, 0, "Found code style
-                         errors(and warnings).")
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
     def test_inheritance(self):
         """Validates the inheritance of Amenity from BaseModel"""
